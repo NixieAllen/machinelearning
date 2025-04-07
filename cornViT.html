@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ViT Plant Disease Classifier</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f6f8fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #1b4965;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #1b4965;
+      margin-top: 2rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    .code-block {
+      background-color: #e0e0e0;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #1b4965;
+      font-family: monospace;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1b4965;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ViT Plant Disease Classifier</h1>
+    <p>A Vision Transformer-based maize leaf disease classifier using PyTorch and Google Colab</p>
+  </header>
+
+  <main>
+    <h2>📌 Project Description</h2>
+    <p>
+      This project demonstrates the use of a pretrained Vision Transformer (ViT) model for classifying different maize leaf diseases. Built with PyTorch and trained in Google Colab, the system uses transfer learning to adapt a ViT-B16 model to detect multiple plant diseases from image data.
+    </p>
+
+    <h2>🚀 Features</h2>
+    <ul>
+      <li>Uses <strong>torchvision.models.vit_b_16</strong> with pretrained weights</li>
+      <li>Fine-tunes only the classifier head for efficiency</li>
+      <li>Integrates with <strong>Google Drive</strong> for dataset access</li>
+      <li>Supports real-time prediction and visualization</li>
+      <li>Includes loss curve visualization and model export</li>
+    </ul>
+
+    <h2>🛠️ System Info</h2>
+    <ul>
+      <li><strong>Framework:</strong> PyTorch</li>
+      <li><strong>Model:</strong> ViT_B_16 (Vision Transformer)</li>
+      <li><strong>Device:</strong> CUDA / CPU</li>
+      <li><strong>Dataset Location:</strong> Google Drive</li>
+    </ul>
+
+    <h2>📄 Code Snippet</h2>
+    <div class="code-block">
+from torchinfo import summary
+
+# Print a summary using torchinfo (uncomment for actual output)
+summary(model=pretrained_vit,
+        input_size=(32, 3, 224, 224), # (batch_size, color_channels, height, width)
+        # col_names=["input_size"], # uncomment for smaller output
+        col_names=["input_size", "output_size", "num_params", "trainable"],
+        col_width=20,
+        row_settings=["var_names"]
+    </div>
+
+    <h2>📊 Training & Evaluation</h2>
+    <ul>
+      <li>Train/Test split handled with <code>torchvision.datasets.ImageFolder</code></li>
+      <li>Training loop managed using <code>engine.train()</code> module</li>
+      <li>Training lasted for <strong>30 epochs</strong></li>
+      <li>Model saved as <code>CornVet.pth</code></li>
+    </ul>
+
+    <h2>🔍 Prediction</h2>
+    <p>
+      You can predict on new images using:
+    </p>
+    <div class="code-block">
+from going_modular.predictions import pred_and_plot_image<br>
+pred_and_plot_image(model=pretrained_vit, image_path="/path/to/image.jpg", class_names=class_names)
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 ViT Plant Classifier | Built with 💡 PyTorch + Google Colab</p>
+  </footer>
+
+</body>
+</html>
